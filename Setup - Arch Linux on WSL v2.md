@@ -144,7 +144,7 @@ sudo pacman -S starship
 ```
 
 See the docs for the proper configuration for your given [shell](https://starship.rs/guide/#step-2-set-up-your-shell-to-use-starship).
-This is unnecessary if using `nushell` becuase the correct configuration is
+This is unnecessary if using `nushell` because the correct configuration is
 specified in that section.
 
 To configure starship itself you will edit/create a file at `~/.config/starship.toml`.
@@ -170,6 +170,7 @@ Use your chosen editor before to configure: `~/.config/nushell/config.nu`
 ```nu
 $env.config.show_banner = false
 
+# for neovim integration
 let nvim_path = $env.HOME | path join '.local/share/bob/nvim-bin'
 $env.EDITOR = $nvim_path | path join 'nvim'
 $env.NVIM_APPNAME = 'nvim-lazy'
@@ -189,3 +190,6 @@ carapace _carapace nushell | save -f ($nu.data-dir | path join 'vendor/autoload/
   # keys to auto-load go here
 ) | split row -r ';.*\s*' | parse -r '(.+)="?([^"]+)' | transpose -r | first | load-env
 ```
+
+To make future changes to this file you can use the shell command `config nu`.
+You should alter this configuration to your taste.
