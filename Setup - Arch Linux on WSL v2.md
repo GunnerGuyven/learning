@@ -165,7 +165,8 @@ New shell [/bin/bash]: /usr/bin/nu
 Shell changed.
 ```
 
-Use your chosen editor before to configure: `~/.config/nushell/config.nu`
+Use your chosen editor before to configure: `~/.config/nushell/config.nu`.
+You should alter this configuration to your taste.
 
 ```nu
 $env.config.show_banner = false
@@ -187,9 +188,8 @@ starship init nu | save -f ($nu.data-dir | path join 'vendor/autoload/starship.n
 carapace _carapace nushell | save -f ($nu.data-dir | path join 'vendor/autoload/carapace.nu')
 
 ( keychain --eval --quiet
-  # keys to auto-load go here
+  # ssh keys to auto-load go here
 ) | split row -r ';.*\s*' | parse -r '(.+)="?([^"]+)' | transpose -r | first | load-env
 ```
 
 To make future changes to this file you can use the shell command `config nu`.
-You should alter this configuration to your taste.
