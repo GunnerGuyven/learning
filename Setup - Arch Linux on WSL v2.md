@@ -155,6 +155,11 @@ See [official site](https://starship.rs/config/) for configuration options.
 This is an argument completion system that integrates well with nushell (below).
 Install from the AUR (using `paru` or using `git` from the aur repos).
 
+### Zoxide
+
+A terminal emulator within a terminal much like `tmux`. Get it from the
+official 'extras' repository.
+
 ### Nushell
 
 ```console
@@ -170,10 +175,11 @@ You should alter this configuration to your taste.
 
 ```nu
 $env.config.show_banner = false
+$env.config.edit_mode = 'vi'
 
 # for neovim integration
-let nvim_path = $env.HOME | path join '.local/share/bob/nvim-bin'
-$env.EDITOR = $nvim_path | path join 'nvim'
+let nvim_path = $env.HOME | path join .local share bob nvim-bin
+$env.EDITOR = $nvim_path | path join nvim
 $env.NVIM_APPNAME = 'nvim-lazy'
 
 $env.PATH ++= [
@@ -183,9 +189,11 @@ $env.PATH ++= [
 
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 
-mkdir ($nu.data-dir | path join 'vendor/autoload')
-starship init nu | save -f ($nu.data-dir | path join 'vendor/autoload/starship.nu')
-carapace _carapace nushell | save -f ($nu.data-dir | path join 'vendor/autoload/carapace.nu')
+let autoload = $nu.data-dir | path join vendor autoload
+mkdir $autoload
+starship init nu | save -f ($autoload | path join starship.nu)
+carapace _carapace nushell | save -f ($autoload | path join carapace.nu)
+zoxide init nushell | save -f ($autoload | path join zoxide.nu)
 
 ( keychain --eval --quiet
   # ssh keys to auto-load go here
