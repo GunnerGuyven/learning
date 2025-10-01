@@ -155,10 +155,14 @@ See [official site](https://starship.rs/config/) for configuration options.
 This is an argument completion system that integrates well with nushell (below).
 Install from the AUR (using `paru` or using `git` from the aur repos).
 
-### Zoxide
+### Zellij
 
 A terminal emulator within a terminal much like `tmux`. Get it from the
 official 'extras' repository.
+
+### Zoxide
+
+A smart `cd` replacement that remembers where you've been.
 
 ### Nushell
 
